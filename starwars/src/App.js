@@ -45,6 +45,8 @@ class App extends Component {
   };
 
   render() {
+    let nextExists = this.state.nextPage ? "" : "nextNull";
+    let prevExists = this.state.prevPage ? "" : "prevNull";
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
@@ -54,6 +56,7 @@ class App extends Component {
           clickedNext={this.clickedNext}
         />
         <button
+          className={`${prevExists}`}
           onClick={event => {
             this.clickedPrevious();
           }}
@@ -61,6 +64,7 @@ class App extends Component {
           Previous
         </button>
         <button
+          className={`${nextExists}`}
           onClick={event => {
             this.clickedNext();
           }}
