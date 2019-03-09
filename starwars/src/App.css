@@ -48,3 +48,46 @@ li {
 .prevNull {
     display: none;
 }
+
+button {
+    background: #ffd700;
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 30px;
+    font-size: 1.6em;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+}
+
+button:hover {
+    background: #fff;
+    color: #ffd700;
+}
+
+button:before,
+button:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #ffd700;
+    transition: 200ms ease all;
+}
+
+button:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+button:hover:before,
+button:hover:after {
+    width: 100%;
+    transition: 400ms ease all;
+}
