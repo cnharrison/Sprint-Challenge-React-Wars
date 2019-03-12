@@ -1,8 +1,93 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
+
 .Header {
-  color: #443e3e;
-  text-shadow: 1px 1px 5px #fff;
+    font-family: 'Poller One', cursive;
+    color: #443e3e;
+    text-shadow: 1px 1px 5px #fff;
 }
+
 /* write your parent styles in here for your App.js */
+
+.name-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+h2 {
+    color: #ffd700;
+    text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+ul {
+    font-family: Oswald;
+    list-style-type: none;
+    text-shadow: white 0.1em 0.1em 0.2em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+li {
+    padding-right: 2rem;
+}
+
+.label {
+    font-weight: bold;
+    align-self: flex-end;
+}
+
+.nextNull {
+    display: none;
+}
+
+.prevNull {
+    display: none;
+}
+
+button {
+    background: #ffd700;
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 30px;
+    font-size: 1.6em;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+}
+
+button:hover {
+    background: #fff;
+    color: #ffd700;
+}
+
+button:before,
+button:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #ffd700;
+    transition: 200ms ease all;
+}
+
+button:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+button:hover:before,
+button:hover:after {
+    width: 100%;
+    transition: 400ms ease all;
+}

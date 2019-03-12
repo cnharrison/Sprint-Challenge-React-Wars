@@ -1,16 +1,27 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import NameList from "./NameList";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: []
+      starwarsChars: [],
+      nextPage: "",
+      prevPage: ""
     };
   }
 
   componentDidMount() {
-    this.getCharacters('https://swapi.co/api/people/');
+    this.getCharacters("https://swapi.co/api/people");
+  }
+
+  clickedPrevious() {
+    this.getCharacters(this.state.prevPage);
+  }
+
+  clickedNext() {
+    this.getCharacters(this.state.nextPage);
   }
 
   getCharacters = URL => {
@@ -22,7 +33,11 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        this.setState({ starwarsChars: data.results });
+        this.setState({
+          starwarsChars: data.results,
+          nextPage: data.next,
+          prevPage: data.previous
+        });
       })
       .catch(err => {
         throw new Error(err);
@@ -30,9 +45,32 @@ class App extends Component {
   };
 
   render() {
+    let nextExists = this.state.nextPage ? "" : "nextNull";
+    let prevExists = this.state.prevPage ? "" : "prevNull";
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
+        <NameList
+          characters={this.state.starwarsChars}
+          clickedPrevious={this.clickedPrevious}
+          clickedNext={this.clickedNext}
+        />
+        <button
+          className={`${prevExists}`}
+          onClick={event => {
+            this.clickedPrevious();
+          }}
+        >
+          Previous
+        </button>
+        <button
+          className={`${nextExists}`}
+          onClick={event => {
+            this.clickedNext();
+          }}
+        >
+          Next
+        </button>
       </div>
     );
   }
